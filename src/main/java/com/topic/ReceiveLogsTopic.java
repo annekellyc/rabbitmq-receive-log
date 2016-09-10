@@ -16,14 +16,12 @@ public class ReceiveLogsTopic {
         channel.exchangeDeclare(EXCHANGE_NAME, "topic");
         String queueName = channel.queueDeclare().getQueue();
 
-//        if (argv.length < 1) {
-//            System.err.println("Usage: ReceiveLogsTopic [binding_key]...");
-//            System.exit(1);
-//        }
+        if (argv.length < 1) {
+            System.err.println("Usage: ReceiveLogsTopic [binding_key]...");
+            System.exit(1);
+        }
 
-//        for (String bindingKey : argv) {
-        channel.queueBind(queueName, EXCHANGE_NAME, "*.critical");
-//        }
+        channel.queueBind(queueName, EXCHANGE_NAME, argv[0]);
 
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 

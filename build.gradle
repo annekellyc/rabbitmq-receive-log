@@ -26,7 +26,7 @@ jar {
 task runJar(dependsOn:jar) << {
     javaexec {
         main="-jar";
-        args jar.archivePath
+        args(jar.archivePath, "$arg1")
     }
 }
 
